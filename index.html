@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Prompt Quality Checker</title>
+
+    <!-- External CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">✦</div>
+            <span>Prompt<span class="highlight">Check</span></span>
+        </div>
+
+        <div class="header-tag">
+            AI Learning Tool
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="hero">
+            <div class="hero-badge">
+                ✨ Prompt Engineering Made Easy
+            </div>
+
+            <h1>
+                AI Prompt Quality
+                <span class="highlight">Checker</span>
+            </h1>
+
+            <p>
+                Check your AI prompts, identify missing components
+                and improve your prompt engineering skills.
+            </p>
+        </section>
+
+        <!-- Main Application -->
+        <section class="app-layout">
+
+            <!-- LEFT SIDE: Prompt Input -->
+            <div class="input-card">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Enter Your Prompt</h2>
+                        <p>Write or paste your AI prompt below.</p>
+                    </div>
+
+                    <span class="step-number">01</span>
+                </div>
+
+                <label for="promptInput">
+                    Your AI Prompt
+                </label>
+
+                <textarea
+                    id="promptInput"
+                    placeholder="Example: Act as an expert teacher. Explain artificial intelligence to college students in simple English. Keep the answer under 100 words and provide five bullet points."
+                ></textarea>
+
+                <div class="character-info">
+                    <span id="charCount">0 characters</span>
+                    <span>Write a clear prompt</span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="button-group">
+
+                    <button id="checkBtn" class="primary-btn">
+                        ✦ Check Prompt
+                    </button>
+
+                    <button id="sampleBtn" class="secondary-btn">
+                        📄 Load Sample
+                    </button>
+
+                    <button id="clearBtn" class="clear-btn">
+                        ↻ Clear
+                    </button>
+
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorMessage" class="error-message" role="alert">
+                    Please enter a prompt before checking.
+                </div>
+
+                <!-- Prompt Tips -->
+                <div class="tips-box">
+                    <h3>💡 Quick Tip</h3>
+
+                    <p>
+                        A good AI prompt should clearly explain
+                        who the AI is, what it should do,
+                        the context, the constraints and
+                        the expected output format.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE: Analysis Results -->
+            <div class="result-card">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Prompt Analysis</h2>
+                        <p>Five important prompt components.</p>
+                    </div>
+
+                    <span class="step-number">02</span>
+                </div>
+
+                <!-- Score Section -->
+                <div class="score-container">
+
+                    <div class="score-circle" id="scoreCircle">
+
+                        <div class="score-content">
+                            <span id="scoreValue">0</span>
+                            <small>/ 100</small>
+                        </div>
+
+                    </div>
+
+                    <div class="score-details">
+                        <h3 id="ratingText">Not Checked</h3>
+
+                        <p id="ratingDescription">
+                            Your prompt score will appear here.
+                        </p>
+
+                        <div class="progress-track">
+                            <div
+                                class="progress-bar"
+                                id="progressBar"
+                            ></div>
+                        </div>
+
+                        <span class="progress-label">
+                            Prompt Quality Score
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- Components -->
+                <div class="components-heading">
+                    <h3>Component Detection</h3>
+
+                    <span id="detectedCount">
+                        0 / 5 Detected
+                    </span>
+                </div>
+
+                <div class="component-list">
+
+                    <div class="component-item" id="roleItem">
+                        <div class="component-icon">👤</div>
+
+                        <div class="component-info">
+                            <h4>1. Role</h4>
+                            <p>Who should the AI act as?</p>
+                        </div>
+
+                        <span class="status">Pending</span>
+                    </div>
+
+                    <div class="component-item" id="taskItem">
+                        <div class="component-icon">🎯</div>
+
+                        <div class="component-info">
+                            <h4>2. Task</h4>
+                            <p>What should the AI do?</p>
+                        </div>
+
+                        <span class="status">Pending</span>
+                    </div>
+
+                    <div class="component-item" id="contextItem">
+                        <div class="component-icon">📚</div>
+
+                        <div class="component-info">
+                            <h4>3. Context</h4>
+                            <p>What background is provided?</p>
+                        </div>
+
+                        <span class="status">Pending</span>
+                    </div>
+
+                    <div class="component-item" id="constraintsItem">
+                        <div class="component-icon">📏</div>
+
+                        <div class="component-info">
+                            <h4>4. Constraints</h4>
+                            <p>What rules should be followed?</p>
+                        </div>
+
+                        <span class="status">Pending</span>
+                    </div>
+
+                    <div class="component-item" id="formatItem">
+                        <div class="component-icon">📋</div>
+
+                        <div class="component-info">
+                            <h4>5. Output Format</h4>
+                            <p>How should the answer look?</p>
+                        </div>
+
+                        <span class="status">Pending</span>
+                    </div>
+
+                </div>
+
+                <!-- Suggestions -->
+                <div class="suggestions-box">
+
+                    <h3>💡 Improvement Suggestions</h3>
+
+                    <div id="suggestions">
+                        <p class="empty-suggestion">
+                            Check your prompt to receive
+                            personalized improvement suggestions.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Scoring Information -->
+        <section class="scoring-section">
+
+            <h2>How Your Prompt Is Scored</h2>
+
+            <p>Each detected component receives 20 marks.</p>
+
+            <div class="scoring-grid">
+
+                <div class="scoring-item">
+                    <span class="rating-score">100</span>
+                    <strong>Excellent</strong>
+                </div>
+
+                <div class="scoring-item">
+                    <span class="rating-score">80</span>
+                    <strong>Very Good</strong>
+                </div>
+
+                <div class="scoring-item">
+                    <span class="rating-score">60</span>
+                    <strong>Good</strong>
+                </div>
+
+                <div class="scoring-item">
+                    <span class="rating-score">40</span>
+                    <strong>Average</strong>
+                </div>
+
+                <div class="scoring-item">
+                    <span class="rating-score">0–20</span>
+                    <strong>Needs Improvement</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            AI Prompt Quality Checker |
+            Designed for College Students
+        </p>
+
+        <span>Learn • Practice • Improve 🚀</span>
+    </footer>
+
+    <!-- External JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+</html>
